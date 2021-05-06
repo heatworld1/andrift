@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <link rel="apple-touch-icon" type="image/png"
+        href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+    <meta name="apple-mobile-web-app-title" content="CodePen">
+
+    <link rel="shortcut icon" type="image/x-icon"
+        href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+
+    <link rel="mask-icon" type=""
+        href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg"
+        color="#111" />
+
+
+    <title>CodePen - Andrift</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+    <link rel='stylesheet'
+        href='https://fonts.googleapis.com/css2?family=Product+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap'>
+
+    <link rel="stylesheet" href="./src/index.css" />
+
+
+</head>
+
+<body translate="no">
+    <meta name="theme-color" content="#B71C1C">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#B71C1C">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#B71C1C">
+    <header>
+        <div class="logo-container">
+            <div class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 200 200">
+                    <defs>
+                        <linearGradient id="headerGradient" y2="100%">
+                            <stop offset="0" class="gradient-start"></stop>
+                            <stop offset="1" class="gradient-stop"></stop>
+                        </linearGradient>
+                    </defs>
+                    <path id="headerSquircle"
+                        d="M 0, 100 C 0, 25 25, 0 100, 0 S 200, 25 200, 100 175, 200 100, 200 0, 175 0, 100"
+                        fill="url(#headerGradient)" />
+                </svg>
+                <i data-feather="cloud"></i>
+            </div>
+            <span>AnDrift</span>
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a name="newMenu" href="#" title="New Float">
+                        <i data-feather="file"></i>
+                    </a>
+                </li>
+                <li>
+                    <a name="canvasMenu" href="#" title="View Full Screen">
+                        <i data-feather="eye"></i>
+                    </a>
+                </li>
+                <li>
+                    <a name="layersMenu" href="#" title="View Layers">
+                        <i data-feather="layers"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div id="loader">
+            <div class="logo">
+                <svg id="logoBackground" class="logo-background" xmlns="http://www.w3.org/2000/svg"
+                    viewbox="0 0 200 200">
+                    <defs>
+                        <linearGradient id="gradient" y2="100%">
+                            <stop offset="0" class="gradient-start">
+                                <animate attributeName="offset" values="0;.5;0;" dur="3s" repeatCount="indefinite">
+                                </animate>
+                            </stop>
+                            <stop offset="1" class="gradient-stop">
+                                <animate attributeName="offset" values=".5; 1; .5" dur="3s" repeatCount="indefinite">
+                                </animate>
+                            </stop>
+                        </linearGradient>
+                    </defs>
+                    <path id="squircle"
+                        d="M 0, 100 C 0, 25 25, 0 100, 0 S 200, 25 200, 100 175, 200 100, 200 0, 175 0, 100"
+                        fill="url(#gradient)" />
+                </svg>
+                <i data-feather="cloud"></i>
+            </div>
+        </div>
+        <aside id="newMenu" class="info-side">
+            <div class="content">
+                <div class="title-row">
+                    <span class="title">New Creation</span>
+                </div>
+                <div>
+                    <p>Are you sure you want to start a new project?</p>
+                    <div class="btns-container">
+                        <button class="close-btn">No</button>
+                        <button class="new-btn">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <aside id="canvasMenu" class="info-side">
+            <div class="content">
+                <div class="title-row">
+                    <span class="title">Canvas Settings</span>
+                </div>
+                <div class="canvas-settings"></div>
+            </div>
+        </aside>
+        <aside id="layersMenu" class="info-side">
+            <div class="content">
+                <div class="title-row">
+                    <span class="title">Layers</span>
+                    <div class="actions">
+                        <div class="action">
+                            <i data-feather="trash"></i>
+                        </div>
+                        <div class="action">
+                            <form id="addPhotoForm">
+                                <label for="addPhotoEl">
+                                    <i data-feather="plus"></i>
+                                </label>
+                                <input type="file" class="hidden" id="addPhotoEl" multiple accept="image/png" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="layers" id="layers"></div>
+            </div>
+        </aside>
+        <section id="dropArea">
+            <form id="dropForm">
+                <input type="file" class="hidden" id="fileElem" multiple accept="image/png" />
+                <label class="button" for="fileElem">
+                    <i data-feather="image"></i>
+                    <p class="direction-txt">Drag images here or click for uploading.</p>
+                    <span class="hint">PNGs files only.</span>
+                </label>
+            </form>
+        </section>
+        <section id="gallery" class="hidden">
+            <form id="appendPhotoForm">
+                <label for="appendPhotoEl"></label>
+                <input type="file" class="hidden" id="appendPhotoEl" multiple accept="image/png" />
+            </form>
+            <p class="gallery-title">Photos</p>
+            <hr />
+            <div class="gallery-imgs"></div>
+            <div class="btn-container">
+                <button class="reset-btn">Reset</button>
+                <button class="upload-btn">Create</button>
+            </div>
+        </section>
+        <section id="canvasContainer" class="hidden" title="Click and Drag to Animate.">
+            <canvas id="canvas"></canvas>
+        </section>
+    </main>
+    <footer>
+        <p>
+            Copyright &copy; <span class="copy-year"></span> Heatworld. All Rights Reserved
+        </p>
+    </footer>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.13.0/Sortable.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js'></script>
+    <script id="rendered-js" src="./src/index.js"></script>
+
+
+
+</body>
+
+</html>
